@@ -1,0 +1,229 @@
+fileFormatVersion: 2
+guid: 79889ce94b59af24b8f6034fe42973ef
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Camera
+    100002: Cube.1162
+    100004: Cube.1163
+    100006: Cube.1165
+    100008: Cube.1166
+    100010: Cube.1167
+    100012: Cube.1168
+    100014: Cube.1169
+    100016: Cylinder.172
+    100018: Cylinder.173
+    100020: Cylinder.174
+    100022: Cylinder.175
+    100024: Cylinder.176
+    100026: Door.013
+    100028: Door.014
+    100030: DoorFrame.010
+    100032: DoorFrame.011
+    100034: //RootNode
+    100036: Handle_Back.010
+    100038: Handle_Back.011
+    100040: Handle_Front.008
+    100042: Handle_Front.009
+    100044: Lamp
+    100046: Lamp_base.012
+    100048: Window.010
+    100050: Window.011
+    400000: Camera
+    400002: Cube.1162
+    400004: Cube.1163
+    400006: Cube.1165
+    400008: Cube.1166
+    400010: Cube.1167
+    400012: Cube.1168
+    400014: Cube.1169
+    400016: Cylinder.172
+    400018: Cylinder.173
+    400020: Cylinder.174
+    400022: Cylinder.175
+    400024: Cylinder.176
+    400026: Door.013
+    400028: Door.014
+    400030: DoorFrame.010
+    400032: DoorFrame.011
+    400034: //RootNode
+    400036: Handle_Back.010
+    400038: Handle_Back.011
+    400040: Handle_Front.008
+    400042: Handle_Front.009
+    400044: Lamp
+    400046: Lamp_base.012
+    400048: Window.010
+    400050: Window.011
+    2000000: Camera
+    2100000: No Name
+    2100002: PVC
+    2100004: Plastic
+    2100006: Glass
+    2100008: Marble
+    2100010: White
+    2100012: Drywall
+    2100014: Carpet
+    2100016: BlackTiles
+    2100018: WhiteTiles
+    2100020: Black
+    2100022: painting
+    2100024: GLASS.001
+    2100026: Lamp_base.001_material
+    2100028: Lampshade_material
+    2100030: Lampholder_material
+    2100032: Lampstrings_material
+    2100034: METAL.001
+    2100036: GLASS.002
+    2100038: Curtain.001
+    2300000: Cube.1162
+    2300002: Cube.1163
+    2300004: Cube.1165
+    2300006: Cube.1166
+    2300008: Cube.1167
+    2300010: Cube.1168
+    2300012: Cube.1169
+    2300014: Cylinder.172
+    2300016: Cylinder.173
+    2300018: Cylinder.174
+    2300020: Cylinder.175
+    2300022: Cylinder.176
+    2300024: Door.013
+    2300026: Door.014
+    2300028: DoorFrame.010
+    2300030: DoorFrame.011
+    2300032: Handle_Back.010
+    2300034: Handle_Back.011
+    2300036: Handle_Front.008
+    2300038: Handle_Front.009
+    2300040: Lamp_base.012
+    2300042: Window.010
+    2300044: Window.011
+    3300000: Cube.1162
+    3300002: Cube.1163
+    3300004: Cube.1165
+    3300006: Cube.1166
+    3300008: Cube.1167
+    3300010: Cube.1168
+    3300012: Cube.1169
+    3300014: Cylinder.172
+    3300016: Cylinder.173
+    3300018: Cylinder.174
+    3300020: Cylinder.175
+    3300022: Cylinder.176
+    3300024: Door.013
+    3300026: Door.014
+    3300028: DoorFrame.010
+    3300030: DoorFrame.011
+    3300032: Handle_Back.010
+    3300034: Handle_Back.011
+    3300036: Handle_Front.008
+    3300038: Handle_Front.009
+    3300040: Lamp_base.012
+    3300042: Window.010
+    3300044: Window.011
+    4300000: DoorFrame.010
+    4300002: Door.013
+    4300004: Handle_Front.008
+    4300006: Handle_Back.010
+    4300008: Window.011
+    4300010: Window.010
+    4300012: DoorFrame.011
+    4300014: Door.014
+    4300016: Handle_Front.009
+    4300018: Handle_Back.011
+    4300020: Cube.1162
+    4300022: Cube.1163
+    4300024: Cylinder.172
+    4300026: Cylinder.173
+    4300028: Lamp_base.012
+    4300030: Cylinder.174
+    4300032: Cube.1165
+    4300034: Cube.1166
+    4300036: Cube.1167
+    4300038: Cube.1168
+    4300040: Cylinder.175
+    4300042: Cylinder.176
+    4300044: Cube.1169
+    10800000: Lamp
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
