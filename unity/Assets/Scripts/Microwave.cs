@@ -20,6 +20,10 @@ public class Microwave : MonoBehaviour {
 	
 	bool displayedError = false;
 
+    public bool MicrowaveOn = false;
+    public float MicrowaveTime = 0;
+    public float tell = 0;
+
 	public void Update() {
 		if (!Application.isPlaying) {
 			Door.localEulerAngles = EditorOpen ? DoorOpenRot : DoorClosedRot;
@@ -89,5 +93,15 @@ public class Microwave : MonoBehaviour {
 				break;
 			}
 		}
+
+        if (!gameObject.GetComponent<Receptacle>().IsClean)
+        {
+
+        }
 	}
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1);
+    }
 }

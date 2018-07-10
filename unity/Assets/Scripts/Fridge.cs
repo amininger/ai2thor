@@ -17,6 +17,11 @@ public class Fridge : MonoBehaviour {
 	Vector3 drawerTargetPosition;
 	float distanceToTarget;
 
+    public float InsideTemperature = 32;
+    private int tell = 0;
+
+    public SimObj[] all;
+
 	void Awake() {
 		ParentObj = gameObject.GetComponent<SimObj> ();
 	}
@@ -62,4 +67,30 @@ public class Fridge : MonoBehaviour {
 			break;
 		}
 	}
+
+    public void CheckInFridge()
+    {
+        all = gameObject.GetComponentsInChildren<SimObj>();
+        foreach (SimObj p in all)
+        {
+            if (p.Type != SimObjType.Undefined)
+            {
+                StartCoroutine("Wait");
+                tell++;
+                if (tell == 5)
+                {
+                    tell = 0;
+                    if (p.temperature > InsideTemperature)
+                    {
+                        p.temperature--;
+                    }
+                }
+            }
+        }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1);
+    }
 }

@@ -14,6 +14,7 @@ public class SimObj : MonoBehaviour {
 			uniqueID = value;
 		}
 	}
+    public float temperature = 77;
 	public SimObjType Type = SimObjType.Undefined;
 	public SimObjManipType Manipulation = SimObjManipType.Inventory;
 	public bool UseCustomBounds = false;
@@ -27,6 +28,13 @@ public class SimObj : MonoBehaviour {
 		}
 	}
 
+    public float ShowTemperature
+    {
+        get
+        {
+            return temperature;
+        }
+    }
 	public Animator Animator {
 		get {
 			return animator;
