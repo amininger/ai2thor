@@ -18,9 +18,14 @@ public class Fridge : MonoBehaviour {
 	float distanceToTarget;
 
     public float InsideTemperature = 32;
-    private int tell = 0;
+    //private int tell = 0;
 
     public SimObj[] all;
+
+    void Start()
+    {
+        InvokeRepeating("CheckInFridge", 1f, 1f);
+    }
 
 	void Awake() {
 		ParentObj = gameObject.GetComponent<SimObj> ();
@@ -66,31 +71,32 @@ public class Fridge : MonoBehaviour {
 			ParentObj.IsAnimating = distanceToTarget > 0.0025f;
 			break;
 		}
+        //StartCoroutine(Wait());
+        //CheckInFridge();
 	}
 
     public void CheckInFridge()
     {
+        //Debug.Log("have fun");
         all = gameObject.GetComponentsInChildren<SimObj>();
+        //Debug.Log(all.Length);
         foreach (SimObj p in all)
         {
-            if (p.Type != SimObjType.Undefined)
+            //Debug.Log(p.Type);
+            if (p.Type != SimObjType.Undefined && p.Type != gameObject.GetComponent<SimObj>().Type)
             {
-                StartCoroutine("Wait");
-                tell++;
-                if (tell == 5)
+                if (p.temperature > InsideTemperature)
                 {
-                    tell = 0;
-                    if (p.temperature > InsideTemperature)
-                    {
-                        p.temperature--;
-                    }
+                    p.temperature--;
                 }
             }
         }
     }
 
-    IEnumerator Wait()
+    /*IEnumerator Wait()
     {
         yield return new WaitForSeconds(1);
-    }
+        //CheckInFridge();
+        Debug.Log("waiting");
+    }*/
 }

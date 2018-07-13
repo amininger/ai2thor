@@ -41,6 +41,7 @@ public class SimObjectEditor : Editor
 		simObj.Type = (SimObjType)EditorGUILayout.EnumPopup ("Object type:", simObj.Type);
 		simObj.Manipulation = (SimObjManipType)EditorGUILayout.EnumPopup ("Manipulation type:", simObj.Manipulation);
 		simObj.UseCustomBounds = EditorGUILayout.Toggle ("Use custom bounds", simObj.UseCustomBounds);
+        simObj.temperature = EditorGUILayout.FloatField("Temperature is", simObj.ShowTemperature);
 		if (!EditorUtility.IsPersistent (simObj)) {
 			EditorGUILayout.Toggle ("Is a receptacle", simObj.IsReceptacle);
 			EditorGUILayout.Toggle ("Is animated", simObj.IsAnimated);

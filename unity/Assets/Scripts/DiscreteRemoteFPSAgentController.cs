@@ -936,6 +936,40 @@ namespace UnityStandardAssets.Characters.FirstPerson
             StartCoroutine(checkWaitAction(success));
 		}
 
+        public void SetTime(ServerAction action)
+        {
+            bool success = false;
+
+            bool objectVisible = false;
+            foreach (SimObj so in VisibleSimObjs(action))
+            {
+                objectVisible = true;
+                Debug.Log(" got sim object: " + so.UniqueID);
+                if (so.Type == SimObjType.Microwave)
+                {
+                 
+                        so.GetComponent<Microwave>().MicrowaveTime = action.timeset;
+                        success = true;
+                    
+                }
+                else
+                {
+                    errorCode = ServerActionErrorCode.NotAbleSetTime;
+                }
+            }
+
+            if (success)
+            {
+                errorCode = ServerActionErrorCode.Undefined;
+            }
+            else
+            {
+                if (!objectVisible)
+                {
+                    errorCode = ServerActionErrorCode.ObjectNotVisible;
+                }
+            }
+        }
 		// empty target receptacle and put object into receptacle
 
 		public void Replace(ServerAction response) 

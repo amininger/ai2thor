@@ -13,16 +13,25 @@ public class Microwave : MonoBehaviour {
 	public Renderer GlassRenderer;
 	public int MatIndex;
 
-	Vector3 targetDoorRotation;
+    public SimObj[] all;
+
+
+    Vector3 targetDoorRotation;
 
 	public bool EditorOpen = false;
 	public bool EditorOn = false;
 	
 	bool displayedError = false;
 
-    public bool MicrowaveOn = false;
+    public bool MicrowaveActivate = false;
+    public float MaxTemperature = 150;
     public float MicrowaveTime = 0;
     public float tell = 0;
+
+    public void Start()
+    {
+        InvokeRepeating("CheckinMicrowave", 1f, 1f);
+    }
 
 	public void Update() {
 		if (!Application.isPlaying) {
@@ -93,15 +102,44 @@ public class Microwave : MonoBehaviour {
 				break;
 			}
 		}
-
-        if (!gameObject.GetComponent<Receptacle>().IsClean)
-        {
-
-        }
 	}
 
-    IEnumerator Wait()
+    public void CheckinMicrowave()
+    {
+        //Debug.Log(all.Length);
+        if (MicrowaveTime > 0 && EditorOpen == false)
+        {
+            MicrowaveActivate = true;
+        }
+        else
+        {
+            MicrowaveActivate = false;
+        }
+        if (MicrowaveActivate == true)
+        {
+            InMicrowave();
+            MicrowaveTime--;
+        }
+    }
+
+    public void InMicrowave()
+    {
+        //Debug.Log("have fun");
+        all = gameObject.GetComponentsInChildren<SimObj>();
+        foreach (SimObj p in all)
+        {
+            if (p.Type != SimObjType.Undefined)
+            {
+                if (p.temperature < MaxTemperature)
+                {
+                    p.temperature++;
+                }
+            }
+        }
+    }
+
+    /*IEnumerator Wait()
     {
         yield return new WaitForSeconds(1);
-    }
+    }*/
 }

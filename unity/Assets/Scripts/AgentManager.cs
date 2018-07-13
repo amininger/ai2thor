@@ -411,6 +411,10 @@ public class ObjectMetadata
 	public string objectId;
 	public float[] bounds3D;
 	public string parentReceptacle;
+    public float temperature;
+    public bool activatable;
+    public bool isactivate;
+    public float timeleft;
 }
 
 [Serializable]
@@ -503,6 +507,7 @@ public class ServerAction
 	public bool renderObjectImage;
 	public bool renderNormalsImage;
 	public float cameraY;
+    public float timeset;
 
 	public SimObjType ReceptableSimObjType()
 	{
@@ -555,5 +560,6 @@ public enum ServerActionErrorCode  {
 	ObjectNotPickupable,
 	LookUpCantExceedMax,
 	LookDownCantExceedMin,
-	InvalidAction
+	InvalidAction,
+    NotAbleSetTime,
 }

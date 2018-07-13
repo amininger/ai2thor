@@ -36,8 +36,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		protected LerpControlledBob m_JumpBob = new LerpControlledBob();
 		[SerializeField]
 		private float m_StepInterval;
-		protected SimObjType[] OpenableTypes = new SimObjType[] { SimObjType.Fridge, SimObjType.Cabinet, SimObjType.Microwave, SimObjType.LightSwitch, SimObjType.Blinds, SimObjType.Book, SimObjType.Toilet };
+		protected SimObjType[] OpenableTypes = new SimObjType[] { SimObjType.Fridge, SimObjType.Cabinet, SimObjType.Microwave, SimObjType.LightSwitch, SimObjType.Blinds, SimObjType.Book, SimObjType.Toilet, SimObjType.Door };
 		protected SimObjType[] ImmobileTypes = new SimObjType[] { SimObjType.Chair, SimObjType.Toaster, SimObjType.CoffeeMachine, SimObjType.Television, SimObjType.StoveKnob };
+        protected SimObjType[] ActivatableTypes = new SimObjType[] { SimObjType.Microwave };
 
 		protected float[] headingAngles = new float[] { 0.0f, 90.0f, 180.0f, 270.0f };
 		protected float[] horizonAngles = new float[] { 60.0f, 30.0f, 0.0f, 330.0f };
@@ -47,8 +48,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			{SimObjType.Laptop, new Dictionary<string, int>{{"open", 2}, {"close", 1}}},
 			{SimObjType.Book, new Dictionary<string, int>{{"open", 1}, {"close", 2}}},
 			{SimObjType.Toilet, new Dictionary<string, int>{{"open", 2}, {"close", 3}}},
-			{SimObjType.Sink, new Dictionary<string, int>{{"open", 2}, {"close", 1}}}
-		};
+			{SimObjType.Sink, new Dictionary<string, int>{{"open", 2}, {"close", 1}}},
+            {SimObjType.Door, new Dictionary<string, int>{{"open", 2}, {"close", 1}}}
+        };
+
+        protected Dictionary<SimObjType, Dictionary<string, int>> ACTIVATE_UNACTIVATE_STATES = new Dictionary<SimObjType, Dictionary<string, int>>{
+            {SimObjType.Microwave, new Dictionary<string, int>{{"activate", 2}, {"unactivate", 1}}}
+        };
 
 
 
@@ -163,11 +169,40 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 		}
 
+        public bool IsActivate(SimObj simobj)
+        {
+            if (simobj.Type == SimObjType.Microwave)
+            {
+                return simobj.GetComponent<Microwave>().MicrowaveActivate;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public float TimeLeft(SimObj simobj)
+        {
+            if (simobj.Type == SimObjType.Microwave)
+            {
+                return simobj.GetComponent<Microwave>().MicrowaveTime;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
 		public bool IsOpenable(SimObj so)
 		{
 
 			return Array.IndexOf(OpenableTypes, so.Type) >= 0 && so.IsAnimated;
 		}
+
+        public bool IsActivatable(SimObj so)
+        {
+            return Array.IndexOf(ActivatableTypes, so.Type) >= 0;
+        }
 
 
 		public bool IsPickupable(SimObj so)
@@ -347,6 +382,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				meta.position = o.transform.position;
 				meta.rotation = o.transform.eulerAngles;
 
+                meta.temperature = simObj.temperature;
+
 				meta.objectType = Enum.GetName(typeof(SimObjType), simObj.Type);
 				meta.receptacle = simObj.IsReceptacle;
 				meta.openable = IsOpenable(simObj);
@@ -354,7 +391,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				{
 					meta.isopen = IsOpen(simObj);
 				}
-				meta.pickupable = IsPickupable(simObj);
+                meta.activatable = IsActivatable(simObj);
+                if (meta.activatable)
+                {
+                    meta.isactivate = IsActivate(simObj);
+                    meta.timeleft = TimeLeft(simObj);
+                }
+                meta.pickupable = IsPickupable(simObj);
 
 				if (meta.receptacle)
 				{

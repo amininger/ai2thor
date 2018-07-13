@@ -15,6 +15,7 @@ public class SimObj : MonoBehaviour {
 		}
 	}
     public float temperature = 77;
+    private float default_temperature = 77;
 	public SimObjType Type = SimObjType.Undefined;
 	public SimObjManipType Manipulation = SimObjManipType.Inventory;
 	public bool UseCustomBounds = false;
@@ -143,6 +144,11 @@ public class SimObj : MonoBehaviour {
 	private bool isAnimating = false;
 	private Transform startupTransform;
 	private Bounds bounds;
+
+    public void Start()
+    {
+        InvokeRepeating("ReturnToNormalTemp", 1f, 60f);
+    }
 
 
 	public void ResetScale() {
@@ -417,5 +423,21 @@ public class SimObj : MonoBehaviour {
 			}
 		}
 	}
-	#endif
+
+    void ReturnToNormalTemp()
+    {
+        if (temperature != default_temperature)
+        {
+            Debug.Log("have fun");
+            if (temperature < default_temperature)
+            {
+                temperature++;
+            }
+            else
+            {
+                temperature--;
+            }
+        }
+    }
+#endif
 }
