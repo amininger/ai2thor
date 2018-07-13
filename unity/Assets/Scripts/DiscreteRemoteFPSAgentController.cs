@@ -701,8 +701,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		}
 
 		public void RotateLeft(ServerAction controlCommand) {
-
-		
 			int index = currentHeadingAngleIndex () - 1;
 			if (index < 0) {
 				index = headingAngles.Length - 1;
@@ -713,10 +711,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
       	}
 
-
-
 		public void RotateRight(ServerAction controlCommand) {
-
 			int index = currentHeadingAngleIndex () + 1;
 			if (index == headingAngles.Length) {
 				index = 0;
@@ -969,6 +964,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     errorCode = ServerActionErrorCode.ObjectNotVisible;
                 }
             }
+            actionFinished(true);
         }
 		// empty target receptacle and put object into receptacle
 

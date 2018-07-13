@@ -107,7 +107,7 @@ public class Microwave : MonoBehaviour {
     public void CheckinMicrowave()
     {
         //Debug.Log(all.Length);
-        if (MicrowaveTime > 0 && EditorOpen == false)
+        if (MicrowaveTime > 0)
         {
             MicrowaveActivate = true;
         }
