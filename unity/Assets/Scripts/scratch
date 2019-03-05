@@ -1,0 +1,32 @@
+# SimObjType.Fridge
+SimObjType.Cabinet
+SimObjType.Microwave
+SimObjType.LightSwitch
+SimObjType.Blinds
+SimObjType.Book
+SimObjType.Toilet
+SimObjType.Door };
+
+SimObjType.Microwave {"open", 2}, {"close", 1}
+SimObjType.Laptop,   {"open", 2}, {"close", 1}
+SimObjType.Book,     {"open", 1}, {"close", 2}
+SimObjType.Toilet,   {"open", 2}, {"close", 3}
+SimObjType.Sink,     {"open", 2}, {"close", 1}
+SimObjType.Door,     {"open", 2}, {"close", 1}
+
+
+public bool IsOpen(SimObj simobj)
+{
+	Animator anim = simobj.Animator;
+	AnimatorControllerParameter param = anim.parameters[0];
+	if (OPEN_CLOSE_STATES.ContainsKey(simobj.Type))
+	{
+		return anim.GetInteger(param.name) == OPEN_CLOSE_STATES[simobj.Type]["open"];
+	}
+	else
+	{
+		return anim.GetBool(param.name);
+	}
+
+}
+
