@@ -103,5 +103,11 @@ public enum SimObjType : int
 	Towel = 85,
 	Watch = 86,
 	MiscTableObject = 87,
-    Door = 88
+    Door = 88,
+	Drawer = 89,
+	SodaCan = 90,
+	WaterBottle = 91,
+	MilkCarton = 92
+
+
 }

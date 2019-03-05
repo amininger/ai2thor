@@ -132,7 +132,7 @@ public class Microwave : MonoBehaviour {
             {
                 if (p.temperature < MaxTemperature)
                 {
-                    p.temperature++;
+                    p.temperature += 2;
                 }
             }
         }

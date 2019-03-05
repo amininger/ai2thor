@@ -462,6 +462,7 @@ public struct MetadataWrapper
 	public int agentId;
 	public ColorId [] colors;
 	public ColorBounds[] colorBounds;
+	public Vector3 cameraPosition;
 }
 
 
@@ -508,6 +509,7 @@ public class ServerAction
 	public bool renderNormalsImage;
 	public float cameraY;
     public float timeset;
+	public string toolId;
 
 	public SimObjType ReceptableSimObjType()
 	{

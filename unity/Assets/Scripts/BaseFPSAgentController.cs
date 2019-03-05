@@ -36,7 +36,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		protected LerpControlledBob m_JumpBob = new LerpControlledBob();
 		[SerializeField]
 		private float m_StepInterval;
-		protected SimObjType[] OpenableTypes = new SimObjType[] { SimObjType.Fridge, SimObjType.Cabinet, SimObjType.Microwave, SimObjType.LightSwitch, SimObjType.Blinds, SimObjType.Book, SimObjType.Toilet, SimObjType.Door };
+		protected SimObjType[] OpenableTypes = new SimObjType[] { SimObjType.Fridge, SimObjType.Cabinet, SimObjType.Drawer, SimObjType.Microwave, SimObjType.LightSwitch, SimObjType.Blinds, SimObjType.Book, SimObjType.Toilet, SimObjType.Door };
 		protected SimObjType[] ImmobileTypes = new SimObjType[] { SimObjType.Chair, SimObjType.Toaster, SimObjType.CoffeeMachine, SimObjType.Television, SimObjType.StoveKnob };
         protected SimObjType[] ActivatableTypes = new SimObjType[] { SimObjType.Microwave };
 
@@ -248,6 +248,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			return res;
         }
 
+		protected bool useSimObj(SimObj targetObj, SimObj toolObj){
+			bool res = false;
+
+			if(targetObj.Type == SimObjType.Mug){
+				res = updateAnimState(targetObj.Animator, 2);
+			}
+			else if(targetObj.Type == SimObjType.Bowl){
+				res = updateAnimState(targetObj.Animator, 2);
+			}
+
+			return res;
+		}
+
 
 		private bool updateAnimState(Animator anim, int value)
 		{
@@ -346,6 +359,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			metaMessage.collidedObjects = collidedObjects;
 			metaMessage.screenWidth = Screen.width;
 			metaMessage.screenHeight = Screen.height;
+			metaMessage.cameraPosition = m_Camera.transform.position;
 
 			return metaMessage;
 		}

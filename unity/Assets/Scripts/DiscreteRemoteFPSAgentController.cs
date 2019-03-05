@@ -700,6 +700,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			return nearestAngleIndex (Quaternion.LookRotation (transform.forward).eulerAngles.y, headingAngles);
 		}
 
+		// Does nothing except send back a new update about the current state of the world
+		public void Poll(ServerAction pollCommand){
+			actionFinished(true);
+		}
+
 		public void RotateLeft(ServerAction controlCommand) {
 			int index = currentHeadingAngleIndex () - 1;
 			if (index < 0) {
@@ -708,7 +713,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			float targetRotation = headingAngles [index];
 			transform.rotation = Quaternion.Euler(new Vector3(0.0f,targetRotation,0.0f));
             actionFinished(true);
-
       	}
 
 		public void RotateRight(ServerAction controlCommand) {
@@ -742,7 +746,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			return false;
 		}
 
+		public void UseObject(ServerAction action) 
+        {
+			bool success = false;
 
+			if (inventory.ContainsKey(action.toolId)){
+				SimObj toolObj = inventory[action.toolId];
+				SimObj targetObj = null;
+				foreach (SimObj so in VisibleSimObjs()) {
+					if (!string.IsNullOrEmpty(action.objectId) && action.objectId == so.UniqueID) {
+						targetObj = so;
+						break;
+					}
+				}
+				if(toolObj != null && targetObj != null){
+					success = useSimObj(targetObj, toolObj);
+				}
+			}
+
+            StartCoroutine(checkWaitAction(success));
+		}
 
 		public void OpenObject(ServerAction action) 
         {

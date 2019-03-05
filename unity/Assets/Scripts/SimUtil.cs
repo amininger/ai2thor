@@ -518,8 +518,8 @@ public static class SimUtil {
 		//set up the player correctly
 		UnityEditor.PlayerSettings.companyName = "Allen Institute for Artificial Intelligence";
 		UnityEditor.PlayerSettings.productName = "RoboSims Platform - " + buildName;
-		UnityEditor.PlayerSettings.defaultScreenWidth = 400;
-		UnityEditor.PlayerSettings.defaultScreenWidth = 300;
+		UnityEditor.PlayerSettings.defaultScreenWidth = 800;
+		UnityEditor.PlayerSettings.defaultScreenHeight = 600;
 		UnityEditor.PlayerSettings.runInBackground = true;
 		UnityEditor.PlayerSettings.captureSingleScreen = false;
 		UnityEditor.PlayerSettings.displayResolutionDialog = UnityEditor.ResolutionDialogSetting.Disabled;
